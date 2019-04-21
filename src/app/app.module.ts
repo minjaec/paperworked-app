@@ -20,6 +20,11 @@ import { InstructionItemEditorComponent } from './editor/instruction-item-editor
 import { InstructionListComponent } from './editor/instruction-list/instruction-list.component';
 import { EditAreaComponent } from './editor/edit-area/edit-area.component';
 import { DocumentDisplayAreaComponent } from './editor/document-display-area/document-display-area.component';
+import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
+import { FirebaseService } from './services/firebase.service';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
+import { SignupComponent } from './pages/signup/signup.component';
+import { DropZoneDirective } from './directives/drop-zone.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,10 @@ import { DocumentDisplayAreaComponent } from './editor/document-display-area/doc
     InstructionItemEditorComponent,
     InstructionListComponent,
     EditAreaComponent,
-    DocumentDisplayAreaComponent
+    DocumentDisplayAreaComponent,
+    AuthModalComponent,
+    SignupComponent,
+    DropZoneDirective
   ],
   imports: [
     BrowserModule,
@@ -41,9 +49,18 @@ import { DocumentDisplayAreaComponent } from './editor/document-display-area/doc
     FlexLayoutModule,
     BrowserAnimationsModule,
     MaterialModule,
-    AngularFireModule.initializeApp(environment.firebase, 'paperworked')
+    AngularFireModule.initializeApp(environment.firebase, 'paperworked'),
+    NgxAuthFirebaseUIModule.forRoot(
+      environment.firebase,
+      () => "paperworked",
+      {
+        enableFirestoreSync: true, // enable/disable autosync users with firestore
+        toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
+        toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
+        authGuardFallbackURL: 'signup'
+      })
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFirestoreModule, AngularFirestoreDocument, AngularFirestoreCollection } 
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } 
 from '@angular/fire/firestore';
-import { AngularFireStorageModule } from '@angular/fire/storage';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import { auth } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
   
-  constructor() { }
+  constructor(
+    private afStore: AngularFireStorage,
+    private afDB: AngularFirestore
+  ) { }
+
+
 }

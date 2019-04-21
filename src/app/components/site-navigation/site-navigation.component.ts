@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthModalComponent } from '../auth-modal/auth-modal.component';
 
 @Component({
   selector: 'app-site-navigation',

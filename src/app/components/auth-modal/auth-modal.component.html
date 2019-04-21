@@ -1,0 +1,6 @@
+<!-- <ngx-auth-firebaseui-user></ngx-auth-firebaseui-user> -->
+<ngx-auth-firebaseui 
+  [providers]="['google', 'facebook', 'twitter']" 
+  (onSuccess)="console.log($event)"
+  (onError)="printError()">
+</ngx-auth-firebaseui>
