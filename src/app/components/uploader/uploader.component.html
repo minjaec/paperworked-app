@@ -24,7 +24,10 @@
     </div>
     <!-- upload complete -->
     <div fxFill *ngIf="downloadURL">
-      <app-project-creator [filename]="filename" [filepath]="filepath" [fileURL]="downloadURL | async">
+      <app-project-creator 
+      [filename]="filename" 
+      [filepath]="filepath">
+      <!-- [fileURL]="downloadURL | async"> -->
       </app-project-creator>
     </div>
   </mat-card>

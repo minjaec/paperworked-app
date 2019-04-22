@@ -5,12 +5,12 @@
   ><img class="logo-image" src="assets/logo.svg"></a>
   <div fxFlex="auto"></div>
   <!-- show different buttons depending on auth state -->
-  <div *ngIf="firebase.userId; then account else signIn"></div>
-  <ng-template #account>
+  <div *ngIf="firebase.userId; then signedIn else signedOut"></div>
+  <ng-template #signedIn>
     <a mat-button routerLink="/home" routerLinkActive="active">My Projects</a>
     <a mat-mini-fab class="avatar" routerLink="/signup" routerLinkActive="active" [ngStyle]="{'background-image': 'url('+firebase.userPhotoURL+')'}"></a>
   </ng-template>
-  <ng-template #signIn>
+  <ng-template #signedOut>
     <a mat-button routerLink="/signup" routerLinkActive="active">Sign In</a>
   </ng-template> 
 </mat-toolbar>

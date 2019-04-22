@@ -1,13 +1,53 @@
-<mat-card-title>Let's create your project</mat-card-title>
-<p>
-    If logged in then project form else sign in and then project form
-</p>
-<p>
-  FileURL: {{fileURL}}
-</p>
-<p>
-  Filename: {{filename}}
-</p>
-<p>
-  Filepath: {{filepath}}
-</p>
+<!-- https://material.angular.io/components/stepper/overview -->
+<mat-card-title>Let's get started</mat-card-title>
+<div *ngIf="firebase.userId; then signedIn else signedOut"></div>
+<ng-template #signedOut>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <ngx-auth-firebaseui [formGroup]="firstFormGroup" [guestEnabled]="false" [providers]="['google']"
+        (onError)="printError()" (onSuccess)="stepper.next(); StepState='done'">
+        <ng-template matStepLabel>Account</ng-template>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </ngx-auth-firebaseui>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Project Name</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Project Name" value="{{filename}}" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      Taking you to the editor...
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-template>
+<ng-template #signedIn>
+  <mat-horizontal-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+      <ng-template matStepLabel>Project Name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Project Name" value="{{filename}}" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <button mat-button matStepperNext>Next</button>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      Display some project info here
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-template>

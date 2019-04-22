@@ -30,6 +30,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ProjectCreatorComponent } from './components/project-creator/project-creator.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { ProjectCreatorComponent } from './components/project-creator/project-cr
     SignupComponent,
     UploaderComponent,
     UploaderDirective,
-    ProjectCreatorComponent
+    ProjectCreatorComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,7 +69,8 @@ import { ProjectCreatorComponent } from './components/project-creator/project-cr
         toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
         toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
         authGuardFallbackURL: 'signup'
-      })
+      }),
+    ReactiveFormsModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
