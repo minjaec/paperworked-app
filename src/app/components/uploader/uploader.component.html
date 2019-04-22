@@ -1,0 +1,31 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-around center">
+  <mat-card class="uploader" uploader (hovered)="toggleHover($event)" (dropped)="uploadFile($event)"
+    [class.hovering]="isHovering" style="padding : 25px" fxFlexOffset="-20" fxLayout="column">
+    <!-- no upload and hovering -->
+    <div fxFill *ngIf="!downloadURL && isHovering">
+      <mat-card-title>Drop to upload</mat-card-title>
+    </div>
+    <!-- not hovering -->
+    <div fxFill *ngIf="!downloadURL && !isHovering && !progress">
+      <!-- initial state -->
+        <mat-card-title>Create a step-by-step guide</mat-card-title>
+        <mat-card-subtitle>Drag & drop a PDF to begin</mat-card-subtitle>
+        <button mat-stroked-button class="file-input" color="primary" style="width : 100%">
+          <label fxFill>
+            <input type="file" accept="application/pdf" (change)="uploadFile($event.target.files)">
+            <span>Choose File</span>
+          </label>
+        </button>
+    </div>
+    <!-- uploading -->
+    <div *ngIf="!downloadURL && progress | async">
+      <mat-card-title>Uploading...</mat-card-title>
+      <mat-progress-bar mode="determinate" [value]="progress"></mat-progress-bar>
+    </div>
+    <!-- upload complete -->
+    <div fxFill *ngIf="downloadURL">
+      <app-project-creator [filename]="filename" [filepath]="filepath" [fileURL]="downloadURL | async">
+      </app-project-creator>
+    </div>
+  </mat-card>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthProvider, Theme } from 'ngx-auth-firebaseui';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-auth-modal',
@@ -8,7 +8,9 @@ import { AuthProvider, Theme } from 'ngx-auth-firebaseui';
 })
 export class AuthModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AngularFireAuth) { }
+
+  loggedIn:boolean;
 
   ngOnInit() {
 

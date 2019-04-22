@@ -1,0 +1,13 @@
+button.file-input input[type="file"] {
+    position:absolute;
+    top: -1000px;
+}
+
+.uploader.hovering {
+    border-radius: 5px;
+    border: 2px solid greenyellow;
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}

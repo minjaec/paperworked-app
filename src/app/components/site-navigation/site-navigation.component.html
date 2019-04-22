@@ -4,7 +4,16 @@
       fxFlex="initial"
   ><img class="logo-image" src="assets/logo.svg"></a>
   <div fxFlex="auto"></div>
-  <a mat-button routerLink="/editor" routerLinkActive="active"> Editor </a>
-  <a mat-button routerLink="/player" routerLinkActive="active"> Player </a>
-  <a mat-button routerLink="/home" routerLinkActive="active"> Account </a>
+  <!-- show different buttons depending on auth state -->
+  <div *ngIf="firebase.userId; then account else signIn"></div>
+  <ng-template #account>
+    <a mat-button routerLink="/home" routerLinkActive="active">My Projects</a>
+    <a mat-mini-fab class="avatar" routerLink="/signup" routerLinkActive="active" [ngStyle]="{'background-image': 'url('+firebase.userPhotoURL+')'}"></a>
+  </ng-template>
+  <ng-template #signIn>
+    <a mat-button routerLink="/signup" routerLinkActive="active">Sign In</a>
+  </ng-template> 
 </mat-toolbar>
+
+<!-- <a mat-button routerLink="/editor" routerLinkActive="active"> Editor </a>
+<a mat-button routerLink="/player" routerLinkActive="active"> Player </a> -->

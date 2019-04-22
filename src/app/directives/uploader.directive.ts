@@ -1,9 +1,9 @@
 import { Directive, HostListener, HostBinding, Output, EventEmitter } from '@angular/core';
 
 @Directive({
-  selector: '[dropZone]'
+  selector: '[uploader]'
 })
-export class DropZoneDirective {
+export class UploaderDirective {
 
   @Output() dropped =  new EventEmitter<FileList>();
   @Output() hovered =  new EventEmitter<boolean>();

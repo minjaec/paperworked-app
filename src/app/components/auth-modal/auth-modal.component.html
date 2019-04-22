@@ -1,6 +1,13 @@
-<!-- <ngx-auth-firebaseui-user></ngx-auth-firebaseui-user> -->
-<ngx-auth-firebaseui 
-  [providers]="['google', 'facebook', 'twitter']" 
-  (onSuccess)="console.log($event)"
-  (onError)="printError()">
-</ngx-auth-firebaseui>
+<div *ngIf="auth.authState | async as user; then userInfo else signIn"></div>
+<ng-template #userInfo>
+  <ngx-auth-firebaseui-user></ngx-auth-firebaseui-user>
+</ng-template>
+<ng-template #signIn>
+  <ngx-auth-firebaseui
+  [guestEnabled]="false"
+  [providers]="['google']" 
+  (onError)="printError()"
+  (onSuccess)="console.log($event); loggedIn = true">
+  </ngx-auth-firebaseui>
+</ng-template>
+  <!--  -->

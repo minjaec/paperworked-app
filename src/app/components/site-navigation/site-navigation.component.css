@@ -1,0 +1,8 @@
+.avatar {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    box-shadow: none;
+    margin-left: 10px;
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UploaderComponent } from '../../components/uploader/uploader.component';
 
 @Component({
   selector: 'app-landing',

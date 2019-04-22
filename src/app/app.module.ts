@@ -24,7 +24,12 @@ import { AuthModalComponent } from './components/auth-modal/auth-modal.component
 import { FirebaseService } from './services/firebase.service';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { SignupComponent } from './pages/signup/signup.component';
-import { DropZoneDirective } from './directives/drop-zone.directive';
+import { UploaderDirective } from './directives/uploader.directive';
+import { UploaderComponent } from './components/uploader/uploader.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { ProjectCreatorComponent } from './components/project-creator/project-creator.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import { DropZoneDirective } from './directives/drop-zone.directive';
     DocumentDisplayAreaComponent,
     AuthModalComponent,
     SignupComponent,
-    DropZoneDirective
+    UploaderComponent,
+    UploaderDirective,
+    ProjectCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,9 @@ import { DropZoneDirective } from './directives/drop-zone.directive';
     BrowserAnimationsModule,
     MaterialModule,
     AngularFireModule.initializeApp(environment.firebase, 'paperworked'),
+    AngularFireStorageModule, 
+    AngularFirestoreModule, 
+    AngularFireAuthModule, 
     NgxAuthFirebaseUIModule.forRoot(
       environment.firebase,
       () => "paperworked",
