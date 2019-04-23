@@ -30,6 +30,8 @@ I re-started this project on Angular and Typescript after a failed attempt on Re
 - [ ] TTS integration
 - [ ] Database access control
 - [ ] Project access control
+- [ ] Routing for player
+- [ ] Deep linking for editor
 
 ## Dependencies
 
@@ -40,7 +42,6 @@ This project is created using Angular and TypeScript. I am using the following m
 * [Angular Material](https://github.com/angular/material2) for Material Design components.
 
 [Complete List](https://github.com/minjaec/paperworked-app/network/dependencies)
-
 
 
 
