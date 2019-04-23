@@ -2,7 +2,7 @@
 
 CIS 497 Spring 2019\
 DMD Senior Design\
-MinJae Cho\
+MinJae Cho
 
 I re-started this project on Angular and Typescript after a failed attempt on React. [Old repository](https://github.com/minjaec/paperworked)
 
