@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import {
   MatSidenavModule,
@@ -13,7 +13,7 @@ import {
   MatProgressSpinnerModule,
   MatFormFieldModule,
   MatStepperModule,
-  MatInputModule
+  MatInputModule,
 } from '@angular/material';
 
 @NgModule({
@@ -29,7 +29,7 @@ import {
     MatProgressBarModule,
     MatFormFieldModule,
     MatStepperModule,
-    MatInputModule
+    MatInputModule, 
   ],
   exports: [
     MatSidenavModule,

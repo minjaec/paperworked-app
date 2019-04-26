@@ -1,5 +1,9 @@
 <div fxFill fxLayout="row" fxLayoutAlign="start stretch">
-  <app-document-display-area fxFlex="50"></app-document-display-area>
+  <app-document-display-area fxFlex="50"
+  
+  ></app-document-display-area>
   <mat-divider [vertical]="true"></mat-divider>
-  <app-edit-area fxFlex="50"></app-edit-area>
+  <app-edit-area fxFlex="50"
+    [project]="currentProject"
+  ></app-edit-area>
 </div>

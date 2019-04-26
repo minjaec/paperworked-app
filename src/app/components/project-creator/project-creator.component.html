@@ -26,9 +26,9 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      Taking you to the editor...
+      <!-- Taking you to the editor... -->
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="create()">Start</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>
@@ -44,9 +44,9 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      Display some project info here
+      <!-- Display some project info here -->
       <div>
-        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="create()">Start</button>
       </div>
     </mat-step>
   </mat-horizontal-stepper>

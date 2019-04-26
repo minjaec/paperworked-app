@@ -4,16 +4,17 @@ import * as firebase from 'firebase';
 
 export interface Project {
     author: string,
-    created: firebase.firestore.Timestamp,
-    description: string,
-    editorVersion: string,
+    created: firebase.firestore.FieldValue,
+    description?: string,
+    editorVersion?: string,
     fullFilePath: string,
-    imageURLs: string[],
+    imageURLs?: string[],
     initialized: boolean,
-    instructions: InstructionItem[],
-    lastEdit: firebase.firestore.Timestamp,
+    //instructions will go in a sub-collection, with ID's in the order list.
+    instructionOrder?: string[],
+    lastEdit?: firebase.firestore.Timestamp,
     name: string,
-    numPages: number,
+    numPages?: number,
     published: boolean,
-    type: string
+    type?: string
 }

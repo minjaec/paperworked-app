@@ -10,8 +10,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class SiteNavigationComponent implements OnInit {
 
-  constructor(private firebase : FirebaseService,
-    private auth : AngularFireAuth) { }
+  constructor(private firebase : FirebaseService) { }
 
   ngOnInit() {
   }

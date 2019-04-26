@@ -32,6 +32,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { ProjectCreatorComponent } from './components/project-creator/project-creator.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
         authGuardFallbackURL: 'signup'
       }),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragDropModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

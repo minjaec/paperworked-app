@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project-creator',
@@ -9,18 +10,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ProjectCreatorComponent implements OnInit {
 
-  @Input() filename:string;
-  @Input() filepath:string;
-  @Input() fileURL:string;
+  @Input() filename: string;
+  @Input() filepath: string;
+  // @Input() fileURL:string;
 
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
 
   //https://angular.io/guide/reactive-forms
-  
-  constructor(private firebase : FirebaseService,
-    private _formBuilder: FormBuilder) { }
+
+  constructor(
+    private firebase: FirebaseService,
+    private _formBuilder: FormBuilder,
+    private router: Router) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -31,4 +34,9 @@ export class ProjectCreatorComponent implements OnInit {
     });
   }
 
+  create() {
+    // fix this to use value from forms
+    this.firebase.createProject(this.filename, this.filepath);
+    this.router.navigate(['/editor']);
+  }
 }

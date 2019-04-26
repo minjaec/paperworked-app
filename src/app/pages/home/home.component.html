@@ -1,3 +1,5 @@
-<p>
-  home works!
-</p>
+<div>
+    <li *ngFor="let project of firebase.userProjectsList">
+        project: {{ project | json : 4}}
+    </li>
+</div>
