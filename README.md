@@ -1,27 +1,48 @@
-# PaperworkedApp
+# Paperworked
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
+CIS 497 Spring 2019\
+DMD Senior Design\
+MinJae Cho
 
-## Development server
+I re-started this project on Angular and Typescript after a failed attempt on React. [Old repository](https://github.com/minjaec/paperworked)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Updates
 
-## Code scaffolding
+1. [Overview](minjae.ch/blog/srproj)
+1. [Background and Proposal](minjae.ch/blog/srproj-2)
+1. [Initial Sketches](minjae.ch/blog/srproj-3)
+1. [Mockups](minjae.ch/blog/srproj-3)
+1. [App Design](minjae.ch/blog/srproj-4)
+1. [Implementation](minjae.ch/blog/srproj-5)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Todo
 
-## Build
+- [x] Basic site page components
+- [x] Backend integration
+- [x] File upload
+- [x] Authentication and account management
+- [ ] Creating a new project—*in progress*
+- [ ] User dashboard
+- [ ] Project management
+- [ ] Editor components
+- [ ] Editor functionality
+- [ ] Editor + Player animations
+- [ ] TTS integration
+- [ ] Database access control
+- [ ] Project access control
+- [ ] Routing for player
+- [ ] Deep linking for editor
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Dependencies
 
-## Running unit tests
+This project is created using Angular and TypeScript. I am using the following modules:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [AngularFire](https://github.com/angular/angularfire2) for Firebase integration.
+* [ngx-auth-firebaseui](https://github.com/AnthonyNahas/ngx-auth-firebaseui) for authentication.
+* [Angular Material](https://github.com/angular/material2) for Material Design components.
 
-## Running end-to-end tests
+[Complete List](https://github.com/minjaec/paperworked-app/network/dependencies)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
