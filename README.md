@@ -21,7 +21,7 @@ I re-started this project on Angular and Typescript after a failed attempt on Re
 - [x] Backend integration
 - [x] File upload
 - [x] Authentication and account management
-- [ ] Creating a new project—*in progress*
+- [x] Creating a new project
 - [ ] User dashboard
 - [ ] Project management
 - [ ] Editor components
