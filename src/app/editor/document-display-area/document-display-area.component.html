@@ -1,3 +1,9 @@
+<div *ngIf="pdfSrc; else loading"></div>
+<ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
 <pdf-viewer
     [src]="pdfSrc" 
     [render-text]="false"
@@ -7,7 +13,7 @@
     (page-rendered)="pageRendered($event)"
     [(page)]="currentPage"
 ></pdf-viewer>
-<button (click)="prevPage()">prev</button>
+<!-- <button (click)="prevPage()">prev</button>
 <button (click)="nextPage()">next</button>
-{{currentPage}}
+{{currentPage}} -->
 <canvas id="canvas" width="1632" height="2112"></canvas>

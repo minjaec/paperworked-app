@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { MaterialModule } from 'src/app/material/material.module';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { EditorService } from 'src/app/services/editor.service';
 
 @Component({
   selector: 'app-edit-area',
@@ -10,11 +11,11 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class EditAreaComponent implements OnInit {
 
-  @Input() project;
+  project:Project;
 
   //https://material.angular.io/cdk/drag-drop/overview
 
-  movies = [
+  instructions = [
     'Introduction',
     'Disclaimer',
     'Section 1',
@@ -32,12 +33,16 @@ export class EditAreaComponent implements OnInit {
   ];
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.instructions, event.previousIndex, event.currentIndex);
   }
 
-  constructor() { }
+  constructor(private editor : EditorService) {
+  }
 
   ngOnInit() {
+    console.log("editAreaInit"); 
+    this.project = this.editor.currentProjectData;
+    console.log(this.project);
   }
 
 }

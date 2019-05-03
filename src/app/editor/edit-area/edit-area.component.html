@@ -1,14 +1,22 @@
-<div fxLayout="column" fxLayoutAlign="space-around left">
-    <mat-form-field>
-        <h2><input matInput placeholder="title" value="title goes here"></h2>
-    </mat-form-field>
-    <mat-form-field>
-        <p><input matInput placeholder="description" value="lorem ipsum"></p>
-    </mat-form-field>
-    <h3>Instructions</h3>
-    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+<div *ngIf="editor.getProjectData(); then loaded else loading"></div>
+<ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-spinner></mat-spinner>
     </div>
-</div>
+</ng-template>
+<ng-template #loaded>
+    <div fxLayout="column" fxLayoutAlign="space-around left">
+        <mat-form-field>
+            <h2><input matInput placeholder="title" [value]="project.name"></h2>
+        </mat-form-field>
+        <mat-form-field>
+            <p><input matInput placeholder="description" [value]="project.description"></p>
+        </mat-form-field>
+        <h3>Instructions</h3>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let instruction of instructions" cdkDrag>{{instruction}}</div>
+        </div>
+    </div>
+</ng-template>
 
 <!-- https://material.angular.io/cdk/drag-drop/overview -->

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection }
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection, QueryDocumentSnapshot }
   from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
@@ -16,14 +16,16 @@ export class FirebaseService {
   userId;
   userPhotoURL;
   userProjectsCollectionRef;
-  userProjectsList:object[];
+  userProjectsList:QueryDocumentSnapshot<any>[];
   currentProjectDocRef;
+  storageRef;
 
   constructor(
     public afStore: AngularFireStorage,
     public afDB: AngularFirestore,
     public auth: AngularFireAuth
   ) {
+    this.storageRef = this.afStore.storage.ref();
     this.auth.authState.subscribe(auth => {
       if (auth) {
         this.userId = auth.uid;
@@ -44,7 +46,7 @@ export class FirebaseService {
       this.afDB.collection('users').doc(this.userId).collection('projects').get()
         .subscribe(snapshot => {
           snapshot.forEach(doc => {
-            this.userProjectsList.push( doc.data() );
+            this.userProjectsList.push( doc );
           });
         });
       }

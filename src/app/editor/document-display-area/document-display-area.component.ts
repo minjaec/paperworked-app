@@ -12,14 +12,24 @@ declare const fabric: any;
 })
 export class DocumentDisplayAreaComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
-    var height = this.el.nativeElement.offsetHeight;
-    var width = this.el.nativeElement.offsetWidth;
-    console.log(width, height);
-    this.fabricCanvas = new fabric.Canvas('canvas');
-    this.fabricCanvas.setWidth(width);
-    this.fabricCanvas.setHeight(height);
-    // this.addCanvasListeners();
-    console.log(this.fabricCanvas);
+    if(!this.pdfSrc) {
+      this.pdfRef.getDownloadURL().then( url => {
+        console.log("downloading pdf", url);
+        this.pdfSrc = url;
+      })
+    }
+
+    if(!this.fabricCanvas) {
+      console.log("init fabric canvas");
+      var height = this.el.nativeElement.offsetHeight;
+      var width = this.el.nativeElement.offsetWidth;
+      // console.log(width, height);
+      this.fabricCanvas = new fabric.Canvas('canvas');
+      this.fabricCanvas.setWidth(width);
+      this.fabricCanvas.setHeight(height);
+    }
+    this.addCanvasListeners();
+    // console.log(this.fabricCanvas);
     this.fabricCanvas.renderAll();
   }
 
@@ -63,21 +73,33 @@ export class DocumentDisplayAreaComponent implements OnInit, AfterViewInit {
       this.renderAll();
     });
 
-    this.fabricCanvas.on('mouse:up', function (o) {
+    this.fabricCanvas.on('mouse:up', o => {
       isDown = false;
-      //create instruction item
     });
+
+    this.fabricCanvas.on("object:added", o => {
+      this.addInstructionItem(o);
+    })
+  }
+  addInstructionItem(o: any) {
+    this.editor.addInstruction(o);
+    //add listener to object using o.target.on(eventName, handler)
+    //emit on hover so that the correct item on the list can be highlighted
   }
 
   currentPage: number;
   renderData: any[] = [];
   fabricCanvas: any;
+  pdfLoc:any = {
+    originX: 'left',
+    originY: 'top'
+  };
 
   // ngAfterViewChecked(): void {
   //   console.log("ngAfterViewChecked");
   // }
 
-  pageRendered(e: CustomEvent) {
+  pageRendered(e) {
     if (e.pageNumber == this.currentPage) {
       const pdfCanvas = e.source.canvas;
       var img = new Image();
@@ -85,12 +107,7 @@ export class DocumentDisplayAreaComponent implements OnInit, AfterViewInit {
       const fabImg = new fabric.Image(img, { width: pdfCanvas.width, height: pdfCanvas.height });
       fabImg.scaleToHeight(this.el.nativeElement.offsetHeight);
       this.renderData.push(fabImg);
-      this.fabricCanvas.setBackgroundImage(fabImg, this.fabricCanvas.renderAll.bind(this.fabricCanvas), {
-        // Needed to position backgroundImage at 0/0
-        originX: 'left',
-        originY: 'top'
-      });
-      this.fabricCanvas.renderAll();
+      this.fabricCanvas.setBackgroundImage(fabImg, this.fabricCanvas.renderAll.bind(this.fabricCanvas), this.pdfLoc);
     } else if (e.pageNumber == this.currentPage + 1) {
       const pdfCanvas = e.source.canvas;
       var img = new Image();
@@ -104,35 +121,30 @@ export class DocumentDisplayAreaComponent implements OnInit, AfterViewInit {
 
   nextPage() {
     this.currentPage += 1;
-    this.fabricCanvas.setBackgroundImage(this.renderData[this.currentPage - 1], this.fabricCanvas.renderAll.bind(this.fabricCanvas), {
-      // Needed to position backgroundImage at 0/0
-      originX: 'left',
-      originY: 'top'
-    });
+    this.fabricCanvas.setBackgroundImage(this.renderData[this.currentPage - 1], this.fabricCanvas.renderAll.bind(this.fabricCanvas), this.pdfLoc);
   }
 
   prevPage() {
     this.currentPage -= 1;
-    this.fabricCanvas.setBackgroundImage(this.renderData[this.currentPage - 1], this.fabricCanvas.renderAll.bind(this.fabricCanvas), {
-      // Needed to position backgroundImage at 0/0
-      originX: 'left',
-      originY: 'top'
-    });
+    this.fabricCanvas.setBackgroundImage(this.renderData[this.currentPage - 1], this.fabricCanvas.renderAll.bind(this.fabricCanvas), this.pdfLoc);
   }
 
   //@ViewChild(PdfViewerComponent) pdfView: PdfViewerComponent;
   @ViewChild('canvas') fabricCanvasElement: HTMLCanvasElement;
 
-  pdfSrc = 'assets/i-765.pdf';
+  pdfSrc;
+  pdfRef;
 
   constructor(private firebase: FirebaseService,
     private editor: EditorService,
-    private el: ElementRef) { }
+    private el: ElementRef) {
+    }
 
   ngOnInit() {
-    var height = this.el.nativeElement.offsetHeight;
-    var width = this.el.nativeElement.offsetWidth;
-    console.log(width, height);
+    this.pdfRef = this.firebase.storageRef.child(this.editor.currentProjectData.fullFilePath);
+    // var height = this.el.nativeElement.offsetHeight;
+    // var width = this.el.nativeElement.offsetWidth;
+    // console.log(width, height);
   }
 
 }

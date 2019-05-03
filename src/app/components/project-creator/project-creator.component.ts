@@ -37,6 +37,6 @@ export class ProjectCreatorComponent implements OnInit {
   create() {
     // fix this to use value from forms
     this.firebase.createProject(this.filename, this.filepath);
-    this.router.navigate(['/editor']);
+    this.router.navigate(['/home']);
   }
 }

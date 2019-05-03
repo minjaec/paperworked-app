@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 
 import { DocumentDisplayAreaComponent } from '../../editor/document-display-area/document-display-area.component';
@@ -7,20 +7,25 @@ import { InstructionItemEditorComponent } from '../../editor/instruction-item-ed
 import { InstructionListComponent } from '../../editor/instruction-list/instruction-list.component';
 import { InstructionItemComponent } from '../../editor/instruction-item/instruction-item.component';
 import { EditorMenuBarComponent } from 'src/app/editor/editor-menu-bar/editor-menu-bar.component';
+import { EditorService } from 'src/app/services/editor.service';
 
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.css']
 })
-export class EditorComponent implements OnInit {
+export class EditorComponent implements OnInit, AfterViewInit {
+  ngAfterViewInit(): void {
+    this.currentProjectData = this.editor.getProjectData();
+  }
 
-  currentProject;
+  currentProjectData;
 
-  constructor(private firebase : FirebaseService) { }
+  constructor(private firebase : FirebaseService,
+    private editor : EditorService) { }
 
   ngOnInit() {
-    this.currentProject = this.firebase.getCurrentProjectData();
+    this.currentProjectData = this.editor.getProjectData();
   }
 
 }

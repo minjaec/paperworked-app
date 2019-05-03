@@ -1,5 +1,8 @@
-<div>
-    <li *ngFor="let project of firebase.userProjectsList">
-        project: {{ project | json : 4}}
-    </li>
+<div class="projectlist" fxLayout="column" fxLayoutAlign="stretch" fxLayoutGap="16px">
+    <button mat-stroked-button *ngFor="let project of firebase.userProjectsList"
+    (click)="openProjectInEditor(project)">
+        <mat-card-title>{{ project.data().name }}</mat-card-title>
+        Created: {{ project.data().created.seconds * 1000 | date:'MM-dd-yyyy' }}<br>
+        Author: {{ (project.data().author == firebase.userId) ? "Me" : "Other User"}}
+    </button>
 </div>

@@ -1,0 +1,9 @@
+.projectlist {
+    padding: 30px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.mat-stroked-button {
+    padding: 12px;
+}
