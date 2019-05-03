@@ -1,9 +1,18 @@
-<div fxFill fxLayout="row" fxLayoutAlign="start stretch">
-  <app-document-display-area fxFlex="50"
-  
-  ></app-document-display-area>
-  <mat-divider [vertical]="true"></mat-divider>
-  <app-edit-area fxFlex="50"
-    [project]="currentProject"
-  ></app-edit-area>
+<div fxFill 
+  fxLayout="row" 
+  fxLayoutAlign="start stretch">
+  <app-document-display-area 
+    fxFlex="75">
+  </app-document-display-area>
+  <mat-divider 
+    [vertical]="true">
+  </mat-divider>
+  <div class="right-div" fxFlex="25">
+    <app-editor-menu-bar></app-editor-menu-bar>
+    <div class="edit-area">
+      <app-edit-area
+      [project]="currentProject">
+      </app-edit-area>
+    </div>
+  </div>
 </div>

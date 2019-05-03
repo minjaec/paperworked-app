@@ -1,0 +1,18 @@
+<mat-toolbar class="edit-menu" color="primary">
+  <button mat-stroked-button class="first">
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <p>Page</p>
+  <button mat-stroked-button>
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+  <span id="filler"></span>
+  <mat-menu #appMenu="matMenu" yPosition="above">
+    <button mat-menu-item>Save</button>
+    <button mat-menu-item>Preview</button>
+    <button mat-menu-item>Publish</button>
+  </mat-menu>
+  <button mat-stroked-button class="last" [matMenuTriggerFor]="appMenu">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

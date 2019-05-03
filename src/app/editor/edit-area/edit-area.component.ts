@@ -23,6 +23,11 @@ export class EditAreaComponent implements OnInit {
     'Item 2',
     'Item 3',
     'Section 2',
+    'Item 1',
+    'Item 1 a',
+    'Item 2',
+    'Item 3',
+    'Section 2',
     'Item 1'
   ];
 

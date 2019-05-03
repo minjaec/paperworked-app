@@ -1,0 +1,28 @@
+.mat-stroked-button.first {
+    float:left;
+    padding:0;
+    min-width:36px;
+    margin-left: 0px;
+    margin-right: 8px;
+}
+
+.mat-stroked-button.last {
+    float:left;
+    padding:0;
+    min-width:36px;
+    margin-left: 8px;
+    margin-right: 0px;
+}
+
+.mat-stroked-button {
+    float:left;
+    padding:0;
+    min-width:36px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+#filler {
+    flex: 1 1 auto;
+    margin-right: 0px;
+}

@@ -33,6 +33,8 @@ import { ProjectCreatorComponent } from './components/project-creator/project-cr
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { EditorMenuBarComponent } from './editor/editor-menu-bar/editor-menu-bar.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     UploaderComponent,
     UploaderDirective,
     ProjectCreatorComponent,
+    EditorMenuBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
         authGuardFallbackURL: 'signup'
       }),
     ReactiveFormsModule,
-    DragDropModule
+    DragDropModule,
+    PdfViewerModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

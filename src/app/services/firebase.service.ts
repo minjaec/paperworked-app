@@ -29,16 +29,17 @@ export class FirebaseService {
         this.userId = auth.uid;
         this.userPhotoURL = auth.photoURL;
       }
-    })
+    });
+    this.userProjectsList = [];
   }
 
   getCurrentProjectData():Project {
-    return this.currentProjectDocRef.data();
+    if(this.currentProjectDocRef) return this.currentProjectDocRef.data();
   }
 
   loadProjects() {
     console.log(this.userId);
-    if (this.userId) {
+    if (this.userId && this.userProjectsList.length === 0) {
       console.log('loading user projects');
       this.afDB.collection('users').doc(this.userId).collection('projects').get()
         .subscribe(snapshot => {
@@ -46,9 +47,7 @@ export class FirebaseService {
             this.userProjectsList.push( doc.data() );
           });
         });
-    } else {
-      this.userProjectsList = [];
-    }
+      }
   }
 
   createProject(projectName: string, filePath: string) {

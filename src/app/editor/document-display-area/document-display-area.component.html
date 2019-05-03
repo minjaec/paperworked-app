@@ -1,3 +1,13 @@
-<p>
-  document-display-area works!
-</p>
+<pdf-viewer
+    [src]="pdfSrc" 
+    [render-text]="false"
+    [original-size]="false"
+    [autoresize]="true"
+    [show-all]="false"
+    (page-rendered)="pageRendered($event)"
+    [(page)]="currentPage"
+></pdf-viewer>
+<button (click)="prevPage()">prev</button>
+<button (click)="nextPage()">next</button>
+{{currentPage}}
+<canvas id="canvas" width="1632" height="2112"></canvas>
