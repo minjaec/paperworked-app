@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewChecked, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { EditorService } from 'src/app/services/editor.service';
 import 'fabric';
@@ -82,10 +82,17 @@ export class DocumentDisplayAreaComponent implements OnInit, AfterViewInit {
     })
   }
   addInstructionItem(o: any) {
-    this.editor.addInstruction(o);
+    console.log(o);
+    this.editor.addInstruction( {
+      onPage: this.currentPage,
+      fabricObject: o.target,
+      name: "new item"
+    } );
     //add listener to object using o.target.on(eventName, handler)
     //emit on hover so that the correct item on the list can be highlighted
   }
+
+  @Output() onAddItem:EventEmitter<any> = new EventEmitter();
 
   currentPage: number;
   renderData: any[] = [];

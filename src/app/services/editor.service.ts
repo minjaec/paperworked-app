@@ -16,6 +16,7 @@ export class EditorService {
   
   currentProjectDocRef:DocumentReference;
   currentProjectData:Project;
+  currentProjectInstructions:InstructionItem[];
 
   selectProject(project: QueryDocumentSnapshot<any>) {
     console.log("editor service received", project);
@@ -29,7 +30,9 @@ export class EditorService {
   }
 
   constructor(private firebase : FirebaseService) {
-
+    this.currentProjectInstructions = [
+      {name: "Introduction"}
+    ];
   }
 
   logProjectData() {
@@ -37,7 +40,7 @@ export class EditorService {
   }
 
   addInstruction(instruction:InstructionItem) {
-
+    this.currentProjectInstructions.push(instruction);
   }
 
   updateInstruction(instruction:InstructionItem) {

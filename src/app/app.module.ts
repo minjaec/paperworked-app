@@ -79,6 +79,7 @@ import { EditorMenuBarComponent } from './editor/editor-menu-bar/editor-menu-bar
     DragDropModule,
     PdfViewerModule
   ],
+  entryComponents: [InstructionItemEditorComponent],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
 })

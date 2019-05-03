@@ -14,7 +14,10 @@
         </mat-form-field>
         <h3>Instructions</h3>
         <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-            <div class="example-box" *ngFor="let instruction of instructions" cdkDrag>{{instruction}}</div>
+            <div class="example-box" 
+            *ngFor="let instruction of instructions"
+            (click)="openModal($e)"
+            cdkDrag>{{instruction.name}}</div>
         </div>
     </div>
 </ng-template>

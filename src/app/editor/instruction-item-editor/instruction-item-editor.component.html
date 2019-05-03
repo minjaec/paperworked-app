@@ -1,3 +1,24 @@
-<p>
-  instruction-item-editor works!
-</p>
+<h2 mat-dialog-title>Edit Instruction</h2>
+<mat-dialog-content fxLayout="column" fxLayoutAlign="space-around stretch">
+
+  <mat-form-field class="full-width">
+    <h3><input matInput placeholder="Name" value="Item Name"></h3>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Written Instruction"></textarea>
+  </mat-form-field>
+
+  <mat-slide-toggle>Same as Written</mat-slide-toggle>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Spoken Instruction"></textarea>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Discard</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="true">Save</button>
+</mat-dialog-actions>

@@ -1,6 +1,7 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-around center">
   <mat-card class="uploader" uploader (hovered)="toggleHover($event)" (dropped)="uploadFile($event)"
-    [class.hovering]="isHovering" style="padding : 25px" fxFlexOffset="-20" fxLayout="column">
+    [class.hovering]="isHovering" style="padding : 25px" fxLayout="column">
+    <!-- fxFlexOffset="-20" -->
     <!-- no upload and hovering -->
     <div fxFill *ngIf="!downloadURL && isHovering">
       <mat-card-title>Drop to upload</mat-card-title>
