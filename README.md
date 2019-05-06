@@ -22,10 +22,10 @@ I re-started this project on Angular and Typescript after a failed attempt on Re
 - [x] File upload
 - [x] Authentication and account management
 - [x] Creating a new project
-- [ ] User dashboard
-- [ ] Project management
-- [ ] Editor components
-- [ ] Editor functionality
+- [x] User dashboard
+- [x] Project management
+- [x] Editor components
+- [x] Editor functionality (partial)
 - [ ] Editor + Player animations
 - [ ] TTS integration
 - [ ] Database access control
@@ -40,6 +40,7 @@ This project is created using Angular and TypeScript. I am using the following m
 * [AngularFire](https://github.com/angular/angularfire2) for Firebase integration.
 * [ngx-auth-firebaseui](https://github.com/AnthonyNahas/ngx-auth-firebaseui) for authentication.
 * [Angular Material](https://github.com/angular/material2) for Material Design components.
+* [fabric.js] (http://fabricjs.com/) for document interactivity in editor.
 
 [Complete List](https://github.com/minjaec/paperworked-app/network/dependencies)
 
