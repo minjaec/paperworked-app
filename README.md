@@ -8,6 +8,8 @@ I re-started this project on Angular and Typescript after a failed attempt on Re
 
 ## Updates
 
+[Presentation Video](https://youtu.be/5gct225FRn0)
+
 1. [Overview](minjae.ch/blog/srproj)
 1. [Background and Proposal](minjae.ch/blog/srproj-2)
 1. [Initial Sketches](minjae.ch/blog/srproj-3)
